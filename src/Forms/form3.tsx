@@ -6,12 +6,12 @@ interface Props {
   handleNext: () => void;
 }
 
-export const form1: React.FC<Props> = ({ handleNext }) => {
+const FormThree: React.FC<Props> = ({ handleNext }) => {
   return (
     <Formik
       initialValues={{ email: '' }}
       validationSchema={Yup.object({
-        email: Yup.string().email('Invalid email').required('Required'),
+        email: Yup.string().email('Invalid email address').required('Required'),
       })}
       onSubmit={(values) => {
         setTimeout(() => {
@@ -21,12 +21,13 @@ export const form1: React.FC<Props> = ({ handleNext }) => {
       }}
     >
       <Form>
-        <label htmlFor="email">Your Email</label>
-        <Field name="email" type="text" />
+        <label htmlFor="email">Email Address</label>
+        <Field name="email" type="email" />
         <ErrorMessage name="email" />
-        <br />
         <button type="submit">Submit</button>
       </Form>
     </Formik>
   );
 };
+
+export default FormThree;

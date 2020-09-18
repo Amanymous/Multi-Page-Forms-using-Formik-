@@ -6,13 +6,13 @@ interface Props {
   handleNext: () => void;
 }
 
-export const form1: React.FC<Props> = ({ handleNext }) => {
+const FormOne: React.FC<Props> = ({ handleNext }) => {
   return (
     <Formik
       initialValues={{ firstName: '' }}
       validationSchema={Yup.object({
         firstName: Yup.string()
-          .max(15, 'Must be 15 characts not less then')
+          .max(15, 'Must be 15 characters or less')
           .required('Required'),
       })}
       onSubmit={(values) => {
@@ -26,9 +26,13 @@ export const form1: React.FC<Props> = ({ handleNext }) => {
         <label htmlFor="firstName">First Name</label>
         <Field name="firstName" type="text" />
         <ErrorMessage name="firstName" />
+
         <br />
+
         <button type="submit">Submit</button>
       </Form>
     </Formik>
   );
 };
+
+export default FormOne;
